@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Component;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/teste', function () {
+    return view('teste');
 });
 
 Route::get('/dashboard', function () {
