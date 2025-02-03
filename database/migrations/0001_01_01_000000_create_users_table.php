@@ -23,7 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('telefone');
             $table->timestamps();
-            $table->integer('saldo')->unsigned();
+            $table->integer('saldo')->unsigned()->default(0);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
