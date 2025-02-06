@@ -13,7 +13,8 @@ Route::get('/teste', function () {
 });
 
 Route::get('/testehelpers', function () {
-    dd(testeHelpers());
+    // dd(testeHelpers());
+    dd(geradorCpf());
 });
 
 
