@@ -64,3 +64,66 @@ if (! function_exists("geradorCpf")) {
         return $str;
     };
 };
+
+if ( ! function_exists("validadorcpf")) {
+    function validadorCpf($cpf) {
+
+        // Verifica o tamanho do cpf
+        $lenghtCpf = Str::length($cpf);
+
+        if ($lenghtCpf != 11){
+            return false;
+        }
+
+        // Verifica os digitos verificadores
+
+        // Verifica o primeiro digito verificador
+        $soma = 0;
+
+        for ($i = 0, $m = 10; $i < 9; $i++, $m--) {
+            $soma += $cpf[$i] * $m;
+        };
+
+        $r = $soma % 11;
+
+        $primeiroVerificador = 0;
+        
+        if ($r == 0 || $r == 1) {
+            $primeiroVerificador = 0;
+        }
+
+        else {
+            $primeiroVerificador = 11 - $r;
+        }
+
+        if ($primeiroVerificador != $cpf[9]) {
+            return false;
+        }
+
+        // Verifica o segundo digito verificador
+
+        $soma = 0;
+
+        for ($i = 1, $m = 10; $i < 10; $i++, $m--) {
+            $soma += $cpf[$i] * $m;
+        };
+
+        $r = $soma % 11;
+
+        $segundoVerificador = 0;
+        
+        if ($r == 0 || $r == 1) {
+            $segundoVerificador = 0;
+        }
+
+        else {
+            $segundoVerificador = 11 - $r;
+        }
+
+        if ($segundoVerificador != $cpf[10]) {
+            return false;
+        }
+
+        return True;
+    }
+}

@@ -14,7 +14,8 @@ Route::get('/teste', function () {
 
 Route::get('/testehelpers', function () {
     // dd(testeHelpers());
-    dd(geradorCpf());
+    $cpf = geradorCpf();
+    dd($cpf, validadorCpf("15513543556"), validadorCpf($cpf));
 });
 
 
