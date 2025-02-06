@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('cep');
             $table->String('cidade');
             $table->string('complemento');
-            $table->string('cpf');
+            $table->string('cpf')->unique();
             $table->integer('creator_id');
             $table->date('data_de_nascimento');
             $table->string('estado');

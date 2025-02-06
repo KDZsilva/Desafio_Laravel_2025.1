@@ -12,6 +12,11 @@ Route::get('/teste', function () {
     return view('teste');
 });
 
+Route::get('/testehelpers', function () {
+    dd(testeHelpers());
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
