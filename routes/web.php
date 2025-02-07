@@ -4,9 +4,18 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+Route::get('/navbar', function () {
+    return view('components.navbar');
+});
+
+
+Route::get('/', function () {
+    return view('public.home');
+});
+
 
 Route::get('/teste', function () {
     return view('teste');
