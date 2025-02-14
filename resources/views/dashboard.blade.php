@@ -21,7 +21,7 @@
                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
                   </svg>
                 <div class="text-white text-[24px] text-bold self-center">
-                    {{ __("10") }}
+                    {{ __(auth()->user()->products()->count()) }}
                 </div>
             </div>
             <div class="bg-blue-400 overflow-hidden shadow-sm sm:rounded-lg flex align-middle justify-center p-4 gap-2">
@@ -30,6 +30,18 @@
                 </svg>
                 <div class="text-white text-[24px] text-bold self-center">
                     {{ __("512") }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12 bg-[#000027]">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex">
+            <div class="bg-blue-400 overflow-hidden shadow-sm sm:rounded-lg flex align-middle justify-center p-4 gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-graph-up text-[46px] self-center text-white" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+                </svg>
+                <div class="text-white text-[72px] text-bold self-center">
+                    R$ {{ __(Auth::user()->saldo) }}
                 </div>
             </div>
         </div>

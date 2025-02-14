@@ -9,6 +9,12 @@ class Subcategory extends Model
 {
     /** @use HasFactory<\Database\Factories\SubcategoryFactory> */
     use HasFactory;
+    
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var list<string>
+    */
     protected $fillable = [
         'categoria',
         'categoy_id'

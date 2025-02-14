@@ -31,10 +31,6 @@ Route::get('/testehelpers', function () {
 
 
 Route::get('/dashboard', function () {
-    dd(
-        Category::all(),
-        Subcategory::all(),
-    );
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
