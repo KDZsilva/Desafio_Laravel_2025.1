@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->timestamps();
             $table->foreignId('user_id')->constrained();
-            $table->integer('unidades')->default(1)->unsigned();
+            $table->integer('unidades')->unsigned();
             $table->integer('valor')->unsigned();
-            $table->foreignId('address_id');
+            $table->timestamps();
         });
     }
 

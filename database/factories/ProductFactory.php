@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->words(4, true),
             'subcategory_id' => random_int(1,10),
-            'thumbnail' => "a",
+            'thumbnail' => fake()->imageUrl(),
             'user_id' => random_int(1,10),
             'preco' => 1,
             'desconto' => 1,
