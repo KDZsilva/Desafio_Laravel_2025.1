@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
@@ -29,6 +31,10 @@ Route::get('/testehelpers', function () {
 
 
 Route::get('/dashboard', function () {
+    dd(
+        Category::all(),
+        Subcategory::all(),
+    );
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

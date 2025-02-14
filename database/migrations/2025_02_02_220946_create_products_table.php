@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('subcategory_id')->constrained();
             $table->string('thumbnail');
             $table->foreignId('user_id')->constrained();
-            $table->integer('preco')->default(0);
-            $table->integer('desconto')->default(0);
+            $table->integer('preco')->unsigned();
+            $table->integer('desconto')->unsigned();
             $table->timestamps();
         });
     }

@@ -52,4 +52,9 @@ class User extends Authenticatable
             'cpf' => 'hashed',
         ];
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
