@@ -62,6 +62,10 @@ class Product extends Model
     {
         return $this->hasMany(Photo::class);
     }
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class);
