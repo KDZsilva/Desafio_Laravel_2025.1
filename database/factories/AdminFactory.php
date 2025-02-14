@@ -24,10 +24,22 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
+            'creator_id' => 1,
+            'foto' => fake()->imageUrl(),
             'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'data_de_nascimento' => fake()->dateTime(),
+            'cpf' => fake()->cpf(),
+            'telefone' => fake()->cellphoneNumber(),
+            /* Criar email com domínio da empresa */
+            'email' => fake()->unique()->adminEmail(),
             'password' => static::$password ??= Hash::make('password'),
+            'rua' => fake('pt_BR')->streetName(),
+            'numero' => fake()->numberBetween(1,99999),
+            'bairro' => fake()->name(),
+            'cidade' => random_int(1,5570),
+            'cep' => fake('pt_BR')->postcode(),
+            'complemento' => fake('pt_BR')->secondaryAddress(),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
     }

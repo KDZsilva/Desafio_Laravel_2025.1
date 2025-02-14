@@ -22,7 +22,7 @@ class AddressFactory extends Factory
          'cidade_id' => random_int(1,5570),
          'complemento' => fake()->word(),
          'numero' => random_int(1, 99999),
-         'rua' => fake()->name(),
+         'rua' => fake('pt_BR')->streetName(),
          'user_id' => random_int(1,10),
         ];
     }

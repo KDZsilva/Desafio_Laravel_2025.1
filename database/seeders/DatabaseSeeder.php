@@ -23,14 +23,14 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->count(10)->create();
-        // Admin::factory()->count(10)->create();
+        $this->call(EstadoSeeder::class);
+        $this->call(CidadeSeeder::class);
+        Address::factory()->count(15)->create();
+        Admin::factory()->count(10)->create();
         Category::factory()->count(5)->create();
         Subcategory::factory()->count(10)->create();
         Product::factory()->count(50)->create();
         Photo::factory()->count(120)->create();
         Comment::factory()->count(100)->create();
-        $this->call(EstadoSeeder::class);
-        $this->call(CidadeSeeder::class);
-        Address::factory()->count(15)->create();
     }
 }

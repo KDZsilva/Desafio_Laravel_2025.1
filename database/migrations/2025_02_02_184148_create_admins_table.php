@@ -13,25 +13,23 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('bairro');
-            $table->string('cep');
-            $table->String('cidade');
-            $table->string('complemento');
-            $table->string('cpf')->unique();
             $table->integer('creator_id');
-            $table->date('data_de_nascimento');
-            $table->string('estado');
-            $table->string('name');
-            $table->string('numero');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('foto');
-            $table->string('password');
-            $table->rememberToken();
-            $table->string('rua');
-            $table->integer('saldo')->unsigned();
+            $table->string('name');
+            $table->date('data_de_nascimento');
+            $table->string('cpf')->unique();
             $table->string('telefone');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('rua');
+            $table->string('numero');
+            $table->string('bairro');
+            $table->foreignId('cidade')->references('id')->on('cidades')->constrained();
+            $table->string('cep');
+            $table->string('complemento')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<\Database\Factories\AdminFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -19,16 +19,23 @@ class Admin extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'creator_id',
+        'foto',
         'name',
+        'data_de_nascimento',
+        'cpf',
+        'telefone',
         'email',
         'password',
-        'cpf',
-        'data_de_nascimento',
-        'foto',
-        'telefone',
-        'saldo',
+        'estado',
+        'rua',
+        'numero',
+        'bairro',
+        'cidade',
+        'cep',
+        'complemento',
+        'email_verified_at',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -50,7 +57,6 @@ class Admin extends Model
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'cpf' => 'hashed',
         ];
     }
 }

@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'cpf' => fake()->cpf(),
             'data_de_nascimento' => fake()->dateTime(),
             'foto' => fake()->imageUrl(),
-            'telefone' => fake()->e164PhoneNumber(),
+            'telefone' => fake()->cellphoneNumber(),
             'saldo' => 0,
         ];
     }
