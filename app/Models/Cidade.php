@@ -12,6 +12,10 @@ class Cidade extends Model
         'nome'
     ];
 
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
     public function Estado(): BelongsTo
     {
         return $this->belongsTo(Estado::class, 'estado_id');

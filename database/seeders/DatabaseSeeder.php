@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
 use App\Models\Comment;
 use App\Models\Photo;
 use App\Models\User;
@@ -30,5 +31,6 @@ class DatabaseSeeder extends Seeder
         Comment::factory()->count(100)->create();
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
+        Address::factory()->count(15)->create();
     }
 }

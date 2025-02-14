@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('complemento');
             $table->string('numero');
             $table->string('rua');
-            $table->timestamps();
             $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 
