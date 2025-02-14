@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->longText('comentario');
             $table->foreignId('product_id')->constrained();
-            $table->timestamps();
             $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 

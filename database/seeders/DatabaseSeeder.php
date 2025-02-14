@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Photo;
 use App\Models\User;
 use App\Models\Admin;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Subcategory::factory()->count(10)->create();
         Product::factory()->count(50)->create();
         Photo::factory()->count(120)->create();
+        Comment::factory()->count(100)->create();
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
     }
