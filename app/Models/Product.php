@@ -23,6 +23,7 @@ class Product extends Model
          'user_id',
          'preco',
          'desconto',
+         'quantd_vendidas',
      ];
  
     //  /**

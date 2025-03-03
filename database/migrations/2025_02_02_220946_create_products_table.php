@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->integer('preco')->unsigned();
             $table->integer('desconto')->unsigned();
+            $table->integer('quantd_vendidas')->unsigned();
             $table->timestamps();
         });
     }

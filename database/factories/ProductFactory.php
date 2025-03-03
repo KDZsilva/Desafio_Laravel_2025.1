@@ -23,6 +23,7 @@ class ProductFactory extends Factory
             'user_id' => random_int(1,10),
             'preco' => 1,
             'desconto' => 1,
+            'quantd_vendidas' => 0,
         ];
     }
 }

@@ -18,11 +18,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Número de Vendas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
@@ -42,11 +42,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Total de entradas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
@@ -67,15 +67,15 @@
                 <div class="w-full pr-12 flex justify-between">
                     <div>
                         <p>Pedidos</p>
-                        {{(Auth::user()->saldo)}}
+                        
                     </div>
                     <div>
                         <p>Pendentes</p>
-                        {{($quantd_sales)}}
+                        
                     </div>
                     <div>
                         <p>Concluídos</p>
-                        {{($quantd_sales)}}
+                        
                     </div>
                 </div>
             </div>
@@ -111,11 +111,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Total de entradas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
@@ -135,11 +135,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Total de entradas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
@@ -159,11 +159,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Total de entradas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
@@ -183,11 +183,11 @@
             <div class="w-full pr-12 flex justify-between">
                 <div>
                     <p>Saldo</p>
-                    R$ {{(Auth::user()->saldo)}}
+                    R$ 
                 </div>
                 <div>
                     <p>Total de entradas</p>
-                    {{($quantd_sales)}}
+                    
                 </div>
             </div>
         </div>
