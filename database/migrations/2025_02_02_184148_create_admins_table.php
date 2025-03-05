@@ -18,15 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->date('data_de_nascimento');
             $table->string('cpf')->unique();
+            $table->string('endereco');
             $table->string('telefone');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('rua');
-            $table->string('numero');
-            $table->string('bairro');
-            $table->foreignId('cidade')->references('id')->on('cidades')->constrained();
-            $table->string('cep');
-            $table->string('complemento')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->rememberToken();

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'cpf',
         'data_de_nascimento',
+        'endereco',
         'foto',
         'telefone',
         'saldo',

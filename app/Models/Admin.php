@@ -22,16 +22,10 @@ class Admin extends Authenticatable
         'name',
         'data_de_nascimento',
         'cpf',
+        'endereco',
         'telefone',
         'email',
         'password',
-        'estado',
-        'rua',
-        'numero',
-        'bairro',
-        'cidade',
-        'cep',
-        'complemento',
         'email_verified_at',
     ];
     /**

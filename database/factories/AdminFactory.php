@@ -33,12 +33,7 @@ class AdminFactory extends Factory
             /* Criar email com domínio da empresa */
             'email' => fake()->unique()->adminEmail(),
             'password' => static::$password ??= Hash::make('password'),
-            'rua' => fake('pt_BR')->streetName(),
-            'numero' => fake()->numberBetween(1,99999),
-            'bairro' => fake()->name(),
-            'cidade' => random_int(1,5570),
-            'cep' => fake('pt_BR')->postcode(),
-            'complemento' => fake('pt_BR')->secondaryAddress(),
+            'endereco' => fake()->address(),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];

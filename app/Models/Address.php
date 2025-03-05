@@ -17,19 +17,9 @@ class Address extends Model
       * @var list<string>
       */
      protected $fillable = [
-         'bairro',
-         'cep',
-         'cidade_id',
-         'complemento',
-         'numero',
-         'rua',
+         'endereco',
          'user_id',
      ];
-
-     public function cidade()
-     {
-        return $this->belongsTo(Cidade::class);
-     }
      public function user()
      {
         return $this->belongsTo(User::class);

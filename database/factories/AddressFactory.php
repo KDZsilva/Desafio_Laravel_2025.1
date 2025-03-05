@@ -17,12 +17,7 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-         'bairro' => fake()->words(3, true),
-         'cep' => fake()->postcode(),
-         'cidade_id' => random_int(1,5570),
-         'complemento' => fake()->word(),
-         'numero' => random_int(1, 99999),
-         'rua' => fake('pt_BR')->streetName(),
+         'endereco' => fake()->address(),
          'user_id' => random_int(1,10),
         ];
     }

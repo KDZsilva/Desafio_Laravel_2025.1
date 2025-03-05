@@ -13,12 +13,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('bairro');
-            $table->string('cep');
-            $table->foreignId('cidade_id')->references('id')->on('cidades');
-            $table->string('complemento');
-            $table->string('numero');
-            $table->string('rua');
+            $table->string('endereco');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
