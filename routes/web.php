@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AuthAdmin;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +37,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
-    })->name('admin.dashboard');
-})->middleware('AuthAdmin');
+    })->middleware(AuthAdmin::class)->name('admin.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
