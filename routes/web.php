@@ -37,7 +37,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
     })->name('admin.dashboard');
-})->middleware('admin');
+})->middleware('AuthAdmin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
