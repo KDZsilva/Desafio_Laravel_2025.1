@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AuthAdmin;
@@ -18,7 +19,7 @@ Route::get('/navbar', function () {
 
 Route::get('/', function () {
     return view('public.home');
-});
+})->name('home');
 
 
 Route::get('/teste', function () {
@@ -38,6 +39,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
     })->middleware(AuthAdmin::class)->name('admin.dashboard');
+    Route::get('/users', [UsersController::class, 'index'])->middleware(AuthAdmin::class)->name('admin.users');
 });
 
 Route::middleware('auth')->group(function () {

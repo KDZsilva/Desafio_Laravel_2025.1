@@ -25,7 +25,7 @@ class AdminFactory extends Factory
     {
         return [
             'creator_id' => 1,
-            'foto' => fake()->imageUrl(),
+            'foto' => '/images/exemplo/admin_default.png',
             'name' => fake()->name(),
             'data_de_nascimento' => fake()->dateTime(),
             'cpf' => fake()->cpf(),
