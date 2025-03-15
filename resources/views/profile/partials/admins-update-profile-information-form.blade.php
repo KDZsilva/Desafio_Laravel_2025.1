@@ -1,3 +1,8 @@
+@php
+    if($admin->creator_id != Auth::guard('admin')->user()->id){
+        return redirect()->route('admin.users');
+    }
+@endphp
 <section>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
