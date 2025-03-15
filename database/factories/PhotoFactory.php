@@ -17,7 +17,7 @@ class PhotoFactory extends Factory
     public function definition(): array
     {
         return [
-            'url' => fake()->imageUrl(),
+            'url' => "storage/defaults/product_default.jpg",
             'description' => fake()->text(),
             'product_id' => random_int(1,50),
         ];

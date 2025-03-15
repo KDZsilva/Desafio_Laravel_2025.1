@@ -18,10 +18,11 @@ class ProductFactory extends Factory
     {
         return [
             'name' => fake()->words(4, true),
+            'descricao' => fake()->text(1000),
             'category_id' => random_int(1,10),
-            'thumbnail' => fake()->imageUrl(),
+            'thumbnail' => "defaults/product_default.jpg",
             'user_id' => random_int(1,10),
-            'preco' => 1,
+            'preco' => 100,
             'desconto' => 1,
             'quantd_vendidas' => 0,
         ];

@@ -21,7 +21,7 @@
         </div>
         <div class="flex flex-col gap-16">
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="#" class="font-black text-4xl">
+                <a href="{{route('admin.products')}}" class="font-black text-4xl">
                     Produtos
                 </a>
             </div>
