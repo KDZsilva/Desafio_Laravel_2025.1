@@ -48,9 +48,9 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center border border-black text-sm leading-4 font-medium w-12 h-12 rounded-full overflow-hidden text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             @if($user)
-                                <img src="{{ $user->foto }}" alt="imagem do usuário logado">
+                                <img src="{{ $user->foto }}" alt="imagem do usuário logado" class="aspect-square object-cover">
                             @else
-                                <img src="images/exemplo/usuario_deslogado.png" alt="imagem do usuário deslogado" class="w-12">
+                                <img src="images/exemplo/usuario_deslogado.png" alt="imagem do usuário deslogado" class="aspect-square object-cover">
                             @endif
                             
                             {{-- <div class="ms-1">

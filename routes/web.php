@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->middleware(AuthAdmin::class)->name('admin.dashboard');
     Route::get('/users', [UsersController::class, 'index'])->middleware(AuthAdmin::class)->name('admin.users');
+    Route::get('/users/{user}', [UsersController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.users.view');
 });
 
 Route::middleware('auth')->group(function () {

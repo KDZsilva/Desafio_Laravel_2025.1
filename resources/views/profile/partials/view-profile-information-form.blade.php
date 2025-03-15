@@ -1,28 +1,24 @@
+
 <section>
+    <div class="flex flex-col">
+        {{-- Imagem --}}
+        <div class="flex justify-center w-100% pt-4">
+            <div class="w-48 rounded-[100%] overflow-hidden border border-black flex items-center">
+                <img src="{{$user->foto}}" alt="" class="aspect-square object-cover">
+            </div>
+        </div>
+        
+    </div>
+
     <header>
         <h2 class="text-lg font-medium text-white">
-            {{ __('Editar Perfil') }}
+            {{ __('Perfil') }}
         </h2>
-
-        <p class="mt-1 text-sm text-white">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
-
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-        @csrf
-        @method('patch')
-
-        <div class="w-10 bg-transparent overflow-hidden">
-            <img src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3383.jpg" alt="" class="w-50">
-        </div>
-
+    <div class="mt-6 space-y-6">
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nome')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
@@ -52,23 +48,35 @@
         </div>
 
         <div>
+            <x-input-label for="telefone" :value="__('Endereço(s)')" />
+            @foreach ($user->addresses as $address)
+                <x-text-input id="telefone" name="telefone" type="text" class="mt-1 block w-full" :value="old('endereço', $address->endereco)" required autofocus autocomplete="endereço" />
+            @endforeach
+            <x-input-error class="mt-2" :messages="$errors->get('endereco')" />
+        </div>
+
+        <div>
             <x-input-label for="telefone" :value="__('Telefone')" />
             <x-text-input id="telefone" name="telefone" type="text" class="mt-1 block w-full" :value="old('telefone', $user->telefone)" required autofocus autocomplete="telefone" />
             <x-input-error class="mt-2" :messages="$errors->get('telefone')" />
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button class="bg-white">{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-white"
-                >{{ __('Saved.') }}</p>
-            @endif
+        <div>
+            <x-input-label for="cpf" :value="__('CPF')" />
+            <x-text-input id="cpf" name="cpf" type="text" class="mt-1 block w-full" :value="old('cpf', $user->cpf)" required autofocus autocomplete="cpf" />
+            <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
         </div>
-    </form>
+
+        <div>
+            <x-input-label for="data_de_nascimento" :value="__('Data de Nascimento')" />
+            <x-text-input id="data_de_nascimento" name="data_de_nascimento" type="text" class="mt-1 block w-full" :value="old('data_de_nascimento', $user->data_de_nascimento)" required autofocus autocomplete="data_de_nascimento" />
+            <x-input-error class="mt-2" :messages="$errors->get('data_de_nascimento')" />
+        </div>
+
+        <div>
+            <x-input-label for="saldo" :value="__('Saldo')" />
+            <x-text-input id="saldo" name="saldo" type="text" class="mt-1 block w-full" :value="old('saldo','R$ ' . $user->saldo)" required autofocus autocomplete="saldo" />
+            <x-input-error class="mt-2" :messages="$errors->get('saldo')" />
+        </div>
+    </div>
 </section>
