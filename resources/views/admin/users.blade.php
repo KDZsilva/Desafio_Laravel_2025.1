@@ -12,8 +12,8 @@
     
     {{-- Tabela de Usuários --}}
     <div class="flex flex-row-reverse mb-4">
-        <div class="flex w-fit bg-blue-900 p-2 rounded-md">
-            <a href="{{route('admin.users.createpage')}}" class="font-medium text-white">Criar Usuário</a>
+        <div class="flex w-fit bg-blue-900 items-center px-4 py-2 rounded-md">
+            <a href="{{route('admin.users.createpage')}}" class="font-medium text-white">CRIAR</a>
         </div>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
@@ -61,12 +61,13 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right flex justify-between">
-                            <div class="flex p-1 rounded-md bg-green-500">
-                                <a href="{{route('admin.users.view', $user->id)}}" class="font-medium text-black ">Visualizar</a>
+                            <div class="flex p-1 rounded-md bg-green-500 items-center px-4 py-2">
+                                <a href="{{route('admin.users.view', $user->id)}}" class="font-medium text-white ">VISUALIZAR</a>
                             </div>
-                            <div class="flex p-1 rounded-md bg-yellow-400">
-                                <a href="{{route('admin.users.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
+                            <div class="flex p-1 rounded-md bg-yellow-400 items-center px-4 py-2">
+                                <a href="{{route('admin.users.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-white">EDITAR</a>
                             </div>
+                            @include('profile.partials.delete-user-form',$user)
                         </td>
                     </tr>
                 @endforeach

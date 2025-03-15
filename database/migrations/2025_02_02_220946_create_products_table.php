@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained();
             $table->string('thumbnail');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('preco')->unsigned();
             $table->integer('desconto')->unsigned();
             $table->integer('quantd_vendidas')->unsigned();

@@ -2,39 +2,35 @@
     @php
         $route = '';
         $parameters =[];
-        if(Auth::guard('web')->check())
+        if(Auth::guard('web')->check()){
             $route = route('profile.destroy');
-        if(Auth::guard('admin')->check())
+            $id = Auth::guard('web')->user()->id;
+        }
+            
+        if(Auth::guard('admin')->check()){
+            $id = $user->id;
             $route = 'admin.users.destroy';
             $parameters = ['user' => $user->id];
             $route = route('admin.users.destroy', $user->id);
+        }
+            
     @endphp
     
-    <header>
-        <h2 class="text-lg font-medium text-white">
-            {{ __('Deletar Conta') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-100">
-            {{ __('Uma vez que uma conta for deleta, ela e todos os seus dados relacionados vão ser permanentemente deletado. Antes de deletar, por favor salve qualquer arquivo ou informação que você queira manter.') }}
-        </p>
-    </header>
-
     <x-danger-button
         x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion{{$id}}')"
     >{{ __('Deletar Conta') }}</x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+    <x-modal name="confirm-user-deletion{{$id}}" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ $route }}" class="p-6">
             @csrf
             @method('delete')
 
-            <h2 class="text-lg font-medium text-gray-900">
+            <h2 class="text-lg font-medium text-gray-900 text-left">
                 {{ __('Tem certeza que deseja deletar essa conta?') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-800">
+            <p class="mt-1 text-sm text-gray-800 text-left">
                 {{ __('Uma vez que uma conta for deleta, ela e todos os seus dados relacionados vão ser permanentemente deletado. Por favor digite sua senha para confirmar que gostaria de deletar permanentemente essa conta.') }}
             </p>
 

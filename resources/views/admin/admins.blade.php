@@ -12,8 +12,8 @@
     
     {{-- Tabela de Usuários --}}
     <div class="flex flex-row-reverse mb-4">
-        <div class="flex w-fit bg-blue-900 p-2 rounded-md">
-            <a href="{{route('admin.admins.createpage')}}" class="font-medium text-white">Criar Admin</a>
+        <div class="flex w-fit bg-blue-900 items-center px-4 py-2 rounded-md">
+            <a href="{{route('admin.admins.createpage')}}" class="font-medium text-white">CRIAR</a>
         </div>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
@@ -62,10 +62,10 @@
                         </td>
                         <td class="px-6 py-4 text-right flex justify-between">
                             <div class="flex p-1 rounded-md bg-green-500 items-center px-4 py-2">
-                                <a href="{{route('admin.admins.view', $admin->id)}}" class="font-medium text-white ">Visualizar</a>
+                                <a href="{{route('admin.admins.view', $admin->id)}}" class="font-medium text-white ">VISUALIZAR</a>
                             </div>
                             <div class="flex p-1 rounded-md bg-yellow-400 items-center px-4 py-2">
-                                <a href="{{route('admin.admins.editpage', $admin->id)}}" class="font-medium bg-yellow-400 text-white">Editar</a>
+                                <a href="{{route('admin.admins.editpage', $admin->id)}}" class="font-medium bg-yellow-400 text-white">EDITAR</a>
                             </div>
                             @include('profile.partials.delete-admin-form',$admin)
                         </td>

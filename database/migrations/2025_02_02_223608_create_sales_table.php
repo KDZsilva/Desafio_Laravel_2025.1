@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('unidades')->unsigned();
             $table->integer('valor')->unsigned();
             $table->timestamps();
