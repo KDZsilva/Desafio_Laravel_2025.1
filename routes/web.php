@@ -36,12 +36,27 @@ Route::get('/testehelpers', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->group(function () {
+    // Dashboard admin
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
     })->middleware(AuthAdmin::class)->name('admin.dashboard');
+
+    // Tabela de usuários
     Route::get('/users', [UsersController::class, 'index'])->middleware(AuthAdmin::class)->name('admin.users');
+
+    // Página de criação de usuário
+    Route::get('/users/create', [UsersController::class, 'createPage'])->middleware(AuthAdmin::class)->name('admin.users.createpage');
+
+    // Criação de usuário
+    Route::post('/users/create', [UsersController::class, 'store'])->middleware(AuthAdmin::class)->name('admin.users.store');
+
+    // Página de visualização de usuário
     Route::get('/users/view/{user}', [UsersController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.users.view');
+
+    // Página de update de usuário
     Route::get('/users/edit/{user}', [UsersController::class, 'editPage'])->middleware(AuthAdmin::class)->name('admin.users.editpage');
+
+    // update user (admin dashboard)
     Route::put('users/{user}', [UsersController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.users.update');
 });
 

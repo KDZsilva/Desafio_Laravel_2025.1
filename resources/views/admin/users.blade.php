@@ -2,6 +2,9 @@
     {{-- Usuários --}}
     <h1 class="text-3xl text-bold">Usuários</h1>
     {{-- Tabela de Usuários --}}
+    <div class="flex flex-row-reverse">
+        <a href="{{route('admin.users.createpage')}}" class="font-medium text-black hover:underline">Criar Usuário</a>
+    </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full max-h-screen text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -43,7 +46,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="w-12 h-12 rounded-[100%] overflow-hidden border border-white">
-                                <img src="{{ $user->foto }}" alt="" class="object-cover">
+                                <img src="{{ asset("storage/{$user->foto}") }}" alt="" class="object-cover">
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right">
