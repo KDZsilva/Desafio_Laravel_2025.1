@@ -34,6 +34,7 @@ class AdminsController extends Controller
 
     public function update (Admin $admin, Request $request){
         $data = $request->all();
+        $data['creator_id'] = $admin->creator_id;
 
         if(empty($request->file('foto'))){
             $data['foto'] = $admin->foto;
@@ -45,7 +46,7 @@ class AdminsController extends Controller
         }
 
         $admin->update($data);
-        $admin->save(['creator_id' => $admin->creator_id,]);
+        $admin->save();
         return redirect()->route('admin.admins')->with('status', 'profile-updated');
     }
 
