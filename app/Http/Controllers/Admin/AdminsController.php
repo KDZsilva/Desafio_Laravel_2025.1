@@ -2,42 +2,41 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin;
 use Hash;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
     public function index (){
-        $users = Admin::orderBy('id', 'desc')->paginate(5);
+        $admin = Admin::orderBy('id', 'desc')->paginate(5);
 
-        return view('admin.admins', ['users' => $users]);
+        return view('admin.admins', ['admins' => $admin]);
     }
 
-    public function editPage ($user_id){
-        $user = Admin::find($user_id);
-        if($user->creator_id != auth()->user()->id){
-            return redirect()->route('admin.users');
-        }
+    public function editPage ($admin_id){
+        $admin = Admin::find($admin_id);
 
-        return view ('admin.admin-update', ['user' => $user]);
+        return view ('admin.admin-update', ['admin' => $admin]);
     }
 
     public function createPage (){
         return view ('admin.admins-create');
     }
 
-    public function view ($user_id){
-        $user = Admin::find($user_id);
+    public function view ($admin_id){
+        $admin = Admin::find($admin_id);
 
-        return view ('admin.admins-view', ['user' => $user]);
+        return view ('admin.admins-view', ['admin' => $admin]);
     }
 
-    public function update (Admin $user, Request $request){
+    public function update (Admin $admin, Request $request){
         $data = $request->all();
+
         if(empty($request->file('foto'))){
-            $data['foto'] = $user->foto;
+            $data['foto'] = $admin->foto;
         }
         else {
             $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
@@ -45,10 +44,8 @@ class AdminsController extends Controller
             $data['foto'] = $path;
         }
 
-
-
-        $user->update($data);
-        $user->save();
+        $admin->update($data);
+        $admin->save(['creator_id' => $admin->creator_id,]);
         return redirect()->route('admin.admins')->with('status', 'profile-updated');
     }
 
@@ -65,6 +62,7 @@ class AdminsController extends Controller
 
         
         Admin::create([
+            'creator_id' => Auth::guard('admin')->user()->id,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -73,13 +71,12 @@ class AdminsController extends Controller
             'data_de_nascimento' => $data['data_de_nascimento'],
             'endereco' => $data['endereco'],
             'telefone' => $data['telefone'],
-            'saldo' => 0
         ]);
         return redirect()->route('admin.admins');
     }
 
-    public function destroy (Admin $user) {
-        $user->delete();
+    public function destroy (Admin $admin) {
+        $admin->delete();
         return redirect()->route('admin.admins');
     }
 }

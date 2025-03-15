@@ -41,31 +41,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($admins as $admin)
                     <tr class="mb-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4">
-                            {{ $user->id }}
+                            {{ $admin->id }}
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $user->name }}
+                            {{ $admin->name }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $user->email }}
+                            {{ $admin->email }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $user->created_at }}
+                            {{ $admin->created_at }}
                         </td>
                         <td class="px-6 py-4">
                             <div class=" flex w-12 h-12 rounded-full items-center overflow-hidden border border-white">
-                                <img src="{{ asset("storage/{$user->foto}") }}" alt="" class="aspect-square object-cover">
+                                <img src="{{ asset("storage/{$admin->foto}") }}" alt="" class="aspect-square object-cover">
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right flex justify-between">
                             <div class="flex p-1 rounded-md bg-green-500">
-                                <a href="{{route('admin.admins.view', $user->id)}}" class="font-medium text-black ">Visualizar</a>
+                                <a href="{{route('admin.admins.view', $admin->id)}}" class="font-medium text-black ">Visualizar</a>
                             </div>
                             <div class="flex p-1 rounded-md bg-yellow-400">
-                                <a href="{{route('admin.admins.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
+                                <a href="{{route('admin.admins.editpage', $admin->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
                             </div>
                         </td>
                     </tr>
@@ -74,5 +74,5 @@
         </table>
     </div>
     {{-- Paginação --}}
-    {{ $users->links() }}
+    {{ $admins->links() }}
 </x-app-layout>
