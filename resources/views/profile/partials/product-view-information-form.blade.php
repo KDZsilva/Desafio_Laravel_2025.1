@@ -5,6 +5,7 @@
     <div class="max-w-screen-xl mx-auto 2xl:px-0">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
         <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
+            <p class="text-white">{{$product->category->categoria}}</p>
           <img class="w-full" src="{{asset("storage/{$product->thumbnail}")}}" alt="" />
         </div>
 
