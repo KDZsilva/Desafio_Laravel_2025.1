@@ -4,7 +4,7 @@
         {{-- Imagem --}}
         <div class="flex justify-center w-100% pt-4">
             <div class="w-48 rounded-[100%] overflow-hidden border border-black flex items-center">
-                <img src="{{$user->foto}}" alt="" class="aspect-square object-cover">
+                <img src="{{asset("storage/{$user->foto}")}}" alt="" class="aspect-square object-cover">
             </div>
         </div>
         

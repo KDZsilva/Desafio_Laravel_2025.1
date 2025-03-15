@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -32,18 +33,50 @@ class UsersController extends Controller
 
     public function update (User $user, Request $request){
         $data = $request->all();
+        if(empty($request->file('foto'))){
+            $data['foto'] = $user->foto;
+        }
+        else {
+            $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
+            $path = $request->file('foto')->storeAs('uploads/' . $file_name);
+            $data['foto'] = $path;
+        }
+
+
+
         $user->update($data);
         $user->save();
         return redirect()->route('admin.users')->with('status', 'profile-updated');
     }
 
     public function store (Request $request){
-        $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
-        $path = $request->file('foto')->storeAs('uploads/' . $file_name);
-
         $data = $request->all();
-        $data['foto'] = $path;
-        User::create($data);
+        if(empty($request->file('foto'))){
+            $data['foto'] = "uploads/avatar_default.jpg";
+        }
+        else {
+            $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
+            $path = $request->file('foto')->storeAs('uploads/' . $file_name);
+            $data['foto'] = $path;
+        }
+
+        
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'foto' => $data['foto'],
+            'cpf' => $data['cpf'],
+            'data_de_nascimento' => $data['data_de_nascimento'],
+            'endereco' => $data['endereco'],
+            'telefone' => $data['telefone'],
+            'saldo' => 0
+        ]);
+        return redirect()->route('admin.users');
+    }
+
+    public function destroy (User $user) {
+        $user->delete();
         return redirect()->route('admin.users');
     }
 }

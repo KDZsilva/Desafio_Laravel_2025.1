@@ -8,25 +8,15 @@
         $route = '';
         $parameters =[];
         if(Auth::guard('web')->check())
-            $route = 'profile.update';
             $route = route('profile.update');
         if(Auth::guard('admin')->check())
             $route = 'admin.users.update';
             $parameters = ['user' => $user->id];
             $route = route('admin.users.update', $user->id);
     @endphp
-    <form method="post" action="{{$route}}" class="mt-6 space-y-6">
+    <form method="post" action="{{$route}}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('put')
-        <div class="flex flex-col">
-            {{-- Imagem --}}
-            <div class="flex justify-center w-100% pt-4">
-                <div class="w-48 rounded-[100%] overflow-hidden border border-black flex items-center">
-                    <img src="{{$user->foto}}" alt="" class="aspect-square object-cover">
-                </div>
-            </div>
-            
-        </div>
 
         <header>
             <h2 class="text-lg font-medium text-white">
@@ -37,6 +27,13 @@
                 {{ __("Atualizar as informações da conta") }}
             </p>
         </header>
+
+        <div>
+            <x-input-label for="foto" :value="__('Foto')" />
+            <input id="foto" name="foto" type="file" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" autofocus>
+            </input>
+            <x-input-error class="mt-2" :messages="$errors->get('foto')" />
+        </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -88,7 +85,7 @@
 
         <div>
             <x-input-label for="data_de_nascimento" :value="__('Data de Nascimento')" />
-            <x-text-input id="data_de_nascimento" name="data_de_nascimento" type="text" class="mt-1 block w-full" :value="old('data_de_nascimento', $user->data_de_nascimento)" required autofocus autocomplete="data_de_nascimento" />
+            <input id="data_de_nascimento" name="data_de_nascimento" type="date" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autofocus autocomplete="data_de_nascimento" />
             <x-input-error class="mt-2" :messages="$errors->get('data_de_nascimento')" />
         </div>
 

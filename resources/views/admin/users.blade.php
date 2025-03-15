@@ -45,8 +45,8 @@
                             {{ $user->created_at }}
                         </td>
                         <td class="px-6 py-4">
-                            <div class="w-12 h-12 rounded-[100%] overflow-hidden border border-white">
-                                <img src="{{ asset("storage/{$user->foto}") }}" alt="" class="object-cover">
+                            <div class=" flex w-12 h-12 rounded-full items-center overflow-hidden border border-white">
+                                <img src="{{ asset("storage/{$user->foto}") }}" alt="" class="aspect-square object-cover">
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right">

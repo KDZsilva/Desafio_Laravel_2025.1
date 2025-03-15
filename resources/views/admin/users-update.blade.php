@@ -14,8 +14,9 @@
         </div>
         
         <div class="flex flex-col items-center self-center w-[90em] rounded-md gap-8 p-8">
-            <div class="flex flex-col w-full gap-2 bg-[#546a7b] rounded-md p-4">
+            <div class="flex flex-col w-full gap-12 bg-[#546a7b] rounded-md p-4">
                 @include('profile.partials.update-profile-information-form')
+                @include('profile.partials.delete-user-form')
             </div>
         </div>
 

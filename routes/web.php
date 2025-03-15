@@ -58,6 +58,9 @@ Route::prefix('admin')->group(function () {
 
     // update user (admin dashboard)
     Route::put('users/{user}', [UsersController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.users.update');
+
+    // delete user (admin dashboard)
+    Route::delete('users/{user}', [UsersController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.users.destroy');
 });
 
 Route::middleware('auth')->group(function () {
