@@ -1,30 +1,25 @@
+@php
+    if($admin->creator_id != Auth::guard('admin')->user()->id){
+        return redirect()->route('admin.users');
+    }
+@endphp
 <section class="space-y-6">
-    
-    <header>
-        <h2 class="text-lg font-medium text-white">
-            {{ __('Deletar Conta') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-100">
-            {{ __('Uma vez que uma conta for deleta, ela e todos os seus dados relacionados vão ser permanentemente deletado. Antes de deletar, por favor salve qualquer arquivo ou informação que você queira manter.') }}
-        </p>
-    </header>
 
     <x-danger-button
         x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Deletar Conta') }}</x-danger-button>
+        x-on:click.prevent="$dispatch('open-modal', 'confirm-admin-deletion{{$admin->id}}')"
+    >{{ __('Deletar') }}</x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+    <x-modal name="confirm-admin-deletion{{$admin->id}}" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('admin.admins.destroy', $admin->id) }}" class="p-6">
             @csrf
             @method('delete')
 
-            <h2 class="text-lg font-medium text-gray-900">
+            <h2 class="text-lg font-medium text-gray-900 text-left">
                 {{ __('Tem certeza que deseja deletar essa conta?') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-800">
+            <p class="mt-1 text-sm text-gray-800 text-left">
                 {{ __('Uma vez que uma conta for deleta, ela e todos os seus dados relacionados vão ser permanentemente deletado. Por favor digite sua senha para confirmar que gostaria de deletar permanentemente essa conta.') }}
             </p>
 

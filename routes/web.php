@@ -58,10 +58,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/users/edit/{user}', [UsersController::class, 'editPage'])->middleware(AuthAdmin::class)->name('admin.users.editpage');
 
     // update user (admin dashboard)
-    Route::put('users/{user}', [UsersController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.users.update');
+    Route::put('/users/{user}', [UsersController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.users.update');
 
     // delete user (admin dashboard)
-    Route::delete('users/{user}', [UsersController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.users.destroy');
+    Route::delete('/users/{user}', [UsersController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.users.destroy');
 
     // Tabela de admins
     Route::get('/admins', [AdminsController::class, 'index'])->middleware(AuthAdmin::class)->name('admin.admins');
@@ -73,16 +73,16 @@ Route::prefix('admin')->group(function () {
     Route::post('/admins/create', [AdminsController::class, 'store'])->middleware(AuthAdmin::class)->name('admin.admins.store');
 
     // Página de visualização de admin
-    Route::get('/admins/view/{user}', [AdminsController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.admins.view');
+    Route::get('/admins/view/{admin}', [AdminsController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.admins.view');
 
     // Página de update de admin
-    Route::get('/admins/edit/{user}', [AdminsController::class, 'editPage'])->middleware(AuthAdmin::class)->name('admin.admins.editpage');
+    Route::get('/admins/edit/{admin}', [AdminsController::class, 'editPage'])->middleware(AuthAdmin::class)->name('admin.admins.editpage');
 
     // update admin
-    Route::put('admins/{user}', [AdminsController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.admins.update');
+    Route::put('/admins/{admin}', [AdminsController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.admins.update');
 
     // delete admin
-    Route::delete('admins/{user}', [AdminsController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.admins.destroy');
+    Route::delete('/admins/{admin}', [AdminsController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.admins.destroy');
 });
 
 Route::middleware('auth')->group(function () {

@@ -34,7 +34,6 @@ class AdminsController extends Controller
 
     public function update (Admin $admin, Request $request){
         $data = $request->all();
-        $data['creator_id'] = $admin->creator_id;
 
         if(empty($request->file('foto'))){
             $data['foto'] = $admin->foto;
@@ -45,7 +44,7 @@ class AdminsController extends Controller
             $data['foto'] = $path;
         }
 
-        $admin->update($data);
+        $admin->update( $data);
         $admin->save();
         return redirect()->route('admin.admins')->with('status', 'profile-updated');
     }
@@ -53,7 +52,7 @@ class AdminsController extends Controller
     public function store (Request $request){
         $data = $request->all();
         if(empty($request->file('foto'))){
-            $data['foto'] = "uploads/avatar_default.jpg";
+            $data['foto'] = "defaults/admin_default.png";
         }
         else {
             $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
@@ -78,6 +77,6 @@ class AdminsController extends Controller
 
     public function destroy (Admin $admin) {
         $admin->delete();
-        return redirect()->route('admin.admins');
+        return redirect()->route('admin.admins')->with('status', 'Admin deleted successfully.');
     }
 }

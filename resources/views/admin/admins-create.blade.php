@@ -1,9 +1,5 @@
 <x-app-layout>
-    @php
-        if($admin->creator_id != Auth::guard('admin')->user()->id){
-            return redirect()->route('admin.users');
-        }
-    @endphp
+    
     <div class="flex flex-col gap-4">
         <div class="flex flex-col">
             <div class="flex flex-row items-center gap-1">
@@ -13,13 +9,13 @@
                 </svg>
                 </a>
                 
-                <h1 class="font-black text-3xl">Editar</h1>
+                <h1 class="font-black text-3xl">Criar</h1>
             </div>
         </div>
         
         <div class="flex flex-col items-center self-center w-[90em] rounded-md gap-8 p-8">
-            <div class="flex flex-col w-full gap-12 bg-[#546a7b] rounded-md p-4">
-                @include('profile.partials.admins-update-profile-information-form')
+            <div class="flex flex-col w-full gap-2 bg-[#546a7b] rounded-md p-4">
+                @include('profile.partials.create-admin-form')
             </div>
         </div>
 

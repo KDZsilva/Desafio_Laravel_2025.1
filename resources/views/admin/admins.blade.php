@@ -61,12 +61,13 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right flex justify-between">
-                            <div class="flex p-1 rounded-md bg-green-500">
-                                <a href="{{route('admin.admins.view', $admin->id)}}" class="font-medium text-black ">Visualizar</a>
+                            <div class="flex p-1 rounded-md bg-green-500 items-center px-4 py-2">
+                                <a href="{{route('admin.admins.view', $admin->id)}}" class="font-medium text-white ">Visualizar</a>
                             </div>
-                            <div class="flex p-1 rounded-md bg-yellow-400">
-                                <a href="{{route('admin.admins.editpage', $admin->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
+                            <div class="flex p-1 rounded-md bg-yellow-400 items-center px-4 py-2">
+                                <a href="{{route('admin.admins.editpage', $admin->id)}}" class="font-medium bg-yellow-400 text-white">Editar</a>
                             </div>
+                            @include('profile.partials.delete-admin-form',$admin)
                         </td>
                     </tr>
                 @endforeach

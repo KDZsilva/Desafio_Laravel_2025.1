@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->integer('creator_id');
-            $table->string('foto');
+            $table->unsignedInteger('creator_id')->default(1);
+            $table->string('foto')->default('defaults/admin_default.jpg');
             $table->string('name');
             $table->date('data_de_nascimento');
             $table->string('cpf')->unique();

@@ -52,7 +52,7 @@ class UsersController extends Controller
     public function store (Request $request){
         $data = $request->all();
         if(empty($request->file('foto'))){
-            $data['foto'] = "uploads/avatar_default.jpg";
+            $data['foto'] = "defaults/user_default.png";
         }
         else {
             $file_name = rand(0, 999999999) . '-'. $request->file('foto')->getClientOriginalName();
