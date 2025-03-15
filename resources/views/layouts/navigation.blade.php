@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if($user && Auth::guard('admin')->check()))
+                @if(Auth::guard('admin')->check())
                     <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
                         {{ __('Users') }}
                     </x-nav-link>
@@ -48,7 +48,7 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center border border-black text-sm leading-4 font-medium w-12 h-12 rounded-full overflow-hidden text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             @if($user)
-                                <img src="{{ $user->foto }}" alt="imagem do usuário logado" class="aspect-square object-cover">
+                                <img src="{{ asset("storage/{$user->foto}") }}" alt="imagem do usuário logado" class="aspect-square object-cover">
                             @else
                                 <img src="images/exemplo/usuario_deslogado.png" alt="imagem do usuário deslogado" class="aspect-square object-cover">
                             @endif
@@ -66,6 +66,10 @@
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('admin.dashboard')">
+                                {{ __('Dashboard') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->

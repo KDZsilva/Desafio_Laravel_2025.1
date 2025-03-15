@@ -1,5 +1,5 @@
 <x-app-layout>
-    {{-- Usuários --}}
+    {{-- Admins --}}
     <div class="flex flex-row items-center gap-1">
         <a href="{{route('admin.dashboard')}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-left-short text-5xl font-black" viewBox="0 0 16 16">
@@ -7,13 +7,13 @@
         </svg>
         </a>
         
-        <h1 class="text-3xl font-black">Usuários</h1>
+        <h1 class="text-3xl font-black">Admins</h1>
     </div>
     
     {{-- Tabela de Usuários --}}
     <div class="flex flex-row-reverse mb-4">
         <div class="flex w-fit bg-blue-900 p-2 rounded-md">
-            <a href="{{route('admin.users.createpage')}}" class="font-medium text-white">Criar Usuário</a>
+            <a href="{{route('admin.admins.createpage')}}" class="font-medium text-white">Criar Admin</a>
         </div>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
@@ -62,10 +62,10 @@
                         </td>
                         <td class="px-6 py-4 text-right flex justify-between">
                             <div class="flex p-1 rounded-md bg-green-500">
-                                <a href="{{route('admin.users.view', $user->id)}}" class="font-medium text-black ">Visualizar</a>
+                                <a href="{{route('admin.admins.view', $user->id)}}" class="font-medium text-black ">Visualizar</a>
                             </div>
                             <div class="flex p-1 rounded-md bg-yellow-400">
-                                <a href="{{route('admin.users.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
+                                <a href="{{route('admin.admins.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-black">Editar</a>
                             </div>
                         </td>
                     </tr>

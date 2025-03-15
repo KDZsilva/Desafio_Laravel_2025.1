@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'cpf' => fake()->cpf(),
             'data_de_nascimento' => fake()->dateTime(),
-            'foto' => '/images/exemplo/user_default.png',
+            'foto' => 'defaults/user_default.png',
             'telefone' => fake()->cellphoneNumber(),
             'saldo' => 0,
         ];
