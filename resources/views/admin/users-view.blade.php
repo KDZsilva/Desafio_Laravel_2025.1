@@ -19,11 +19,5 @@
             </div>
         </div>
 
-        <div class="flex flex-col items-center self-center w-[90em] rounded-md gap-8 p-8">
-            <div class="flex flex-col w-full gap-2 bg-[#546a7b] rounded-md p-4">
-                @include('profile.partials.update-profile-information-form')
-            </div>
-        </div>
-
     </div>
 </x-app-layout>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('data_de_nascimento');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('endereco');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('foto')->nullable();
             $table->string('password');

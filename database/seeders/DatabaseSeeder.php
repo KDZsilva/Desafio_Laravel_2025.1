@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->count(10)->create();
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
-        Address::factory()->count(15)->create();
         Admin::factory()->count(10)->create();
         Category::factory()->count(10)->create();
         Product::factory()->count(50)->create();

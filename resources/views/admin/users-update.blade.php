@@ -9,16 +9,10 @@
                 </svg>
                 </a>
                 
-                <h1 class="font-black text-3xl">Visualizar</h1>
+                <h1 class="font-black text-3xl">Editar</h1>
             </div>
         </div>
         
-        <div class="flex flex-col items-center self-center w-[90em] rounded-md gap-8 p-8">
-            <div class="flex flex-col w-full gap-2 bg-[#546a7b] rounded-md p-4">
-                @include('profile.partials.view-profile-information-form')
-            </div>
-        </div>
-
         <div class="flex flex-col items-center self-center w-[90em] rounded-md gap-8 p-8">
             <div class="flex flex-col w-full gap-2 bg-[#546a7b] rounded-md p-4">
                 @include('profile.partials.update-profile-information-form')

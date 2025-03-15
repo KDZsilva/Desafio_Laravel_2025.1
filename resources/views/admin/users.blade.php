@@ -47,7 +47,8 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{route('admin.users.view', $user->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="{{route('admin.users.view', $user->id)}}" class="font-medium bg-blue-600 text-black hover:underline">View</a>
+                            <a href="{{route('admin.users.editpage', $user->id)}}" class="font-medium bg-yellow-400 text-black hover:underline">Edit</a>
                         </td>
                     </tr>
                 @endforeach

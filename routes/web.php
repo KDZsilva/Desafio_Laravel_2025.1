@@ -40,7 +40,9 @@ Route::prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->middleware(AuthAdmin::class)->name('admin.dashboard');
     Route::get('/users', [UsersController::class, 'index'])->middleware(AuthAdmin::class)->name('admin.users');
-    Route::get('/users/{user}', [UsersController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.users.view');
+    Route::get('/users/view/{user}', [UsersController::class, 'view'])->middleware(AuthAdmin::class)->name('admin.users.view');
+    Route::get('/users/edit/{user}', [UsersController::class, 'editPage'])->middleware(AuthAdmin::class)->name('admin.users.editpage');
+    Route::put('users/{user}', [UsersController::class, 'update'])->middleware(AuthAdmin::class)->name('admin.users.update');
 });
 
 Route::middleware('auth')->group(function () {
