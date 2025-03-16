@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagSeguroController;
 use App\Models\Category;
@@ -29,6 +30,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products/view/{product}', [HomeController::class, 'view'])->middleware('auth')->name('home.products.view');
 
 Route::post('/products/chart/{product}', [HomeController::class, 'chartProduct'])->middleware('auth')->name('home.products.chart');
+
+//checkout
+Route::post('/checkout', [PagSeguroController::class, 'createCheckout'])->name('checkout.create');
 
 
 Route::get('/teste', function () {
@@ -109,8 +113,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-//checkout
-Route::post('/checkout', [PagSeguroController::class, 'createCheckout'])->name('checkout.create');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 require __DIR__.'/auth.php';
