@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagSeguroController;
 use App\Models\Category;
 use App\Models\Subcategory;
+use GuzzleHttp\Middleware;
 use Illuminate\View\Component;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\SalesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\ProductsController;
@@ -18,10 +22,13 @@ Route::get('/navbar', function () {
     return view('components.navbar');
 });
 
+//página inicial
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('public.home');
-})->name('home');
+// Página do Produto
+Route::get('/products/view/{product}', [HomeController::class, 'view'])->middleware('auth')->name('home.products.view');
+
+Route::post('/products/chart/{product}', [HomeController::class, 'chartProduct'])->middleware('auth')->name('home.products.chart');
 
 
 Route::get('/teste', function () {
@@ -33,9 +40,6 @@ Route::get('/testehelpers', function () {
     $cpf = geradorCpf();
     dd($cpf, validadorCpf("15513543556"), validadorCpf($cpf));
 });
-
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->group(function () {
     // Dashboard admin
@@ -88,10 +92,25 @@ Route::prefix('admin')->group(function () {
     Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->middleware(AuthAdmin::class)->name('admin.products.destroy');
 });
 
+//Dashboard User
+Route::get('/user/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::prefix('user')->group(function () {
+    //Tabela de compras
+    Route::get('/sales', [SalesController::class, 'index'])->middleware(['auth', 'verified'])->name('user.sales');
+    //Pdf de Visualização de compra
+
+    //PDF de visualização de histórico de compras
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+//checkout
+Route::post('/checkout', [PagSeguroController::class, 'createCheckout'])->name('checkout.create');
 
 require __DIR__.'/auth.php';

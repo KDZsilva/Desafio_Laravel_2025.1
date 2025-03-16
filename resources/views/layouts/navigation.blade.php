@@ -13,33 +13,8 @@
                         <x-application-logo class="block h-24 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
-                @if(Auth::guard('admin')->check())
-                    <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
-                        {{ __('Users') }}
-                    </x-nav-link>
-                @endif
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Meus Produtos') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Compras') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Vendas') }}
-                    </x-nav-link>
-                </div>
+                
+                {{-- Barra de Pesquisa --}}
             </div>
 
             <!-- Settings Dropdown -->
