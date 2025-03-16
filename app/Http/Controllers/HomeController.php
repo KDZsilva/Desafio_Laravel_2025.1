@@ -38,7 +38,7 @@ class HomeController extends Controller
 
     public function chartproduct(Product $product, Request $request){
         $preco = ($product->preco - $product->desconto);
-        $product->toArray();
+        $product = $product->toArray();
         $product['preco'] = $preco;
         $product['quantidade'] = $request->quantity;
         return view('public.chart', ['product' => $product]);

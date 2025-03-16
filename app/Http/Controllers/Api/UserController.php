@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index () {
         $totalPages = ceil(User::count() / UserController::ITEMS_PER_PAGE);
         $users = User::get();
-        $userData = $users ->map(function ($user) {
+        $userData = $users->map(function ($user) {
             return [
                 'name' => $user->name,
                 'photo' => 'storage/' . $user->foto,

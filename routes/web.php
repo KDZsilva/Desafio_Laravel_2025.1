@@ -116,4 +116,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+Route::get('/sales/pdf', [SalesController::class, 'pdf'])->name('sales.pdf');
+
 require __DIR__.'/auth.php';

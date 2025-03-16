@@ -16,10 +16,10 @@ class PagSeguroController extends Controller
 
         $chartProducts = json_decode($request->products, true);
 
-        $items = array_map(fn($product) => [
-            'name' => $product['name'],
-            'quantity' => $product['quantidade'],
-            'unit_amount' => $product['preco']
+        $items = array_map(fn($chartProducts) => [
+            'name' => $chartProducts['name'],
+            'quantity' => $chartProducts['quantidade'],
+            'unit_amount' => $chartProducts['preco']
         ], $chartProducts);
 
         $response = Http::withHeaders([

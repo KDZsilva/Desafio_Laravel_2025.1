@@ -2,7 +2,7 @@
     <div class="w-full h-screen flex flex-row justify-center items-center gap-24">
         <div class="flex flex-col gap-16">
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="{{route('user.sales')}}" class="font-black text-4xl">
+                <a href="#" class="font-black text-4xl">
                     Compras
                 </a>
             </div>
@@ -27,7 +27,7 @@
             </div>
     
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="#" class="font-black text-4xl">
+                <a href="{{route('user.sales')}}" class="font-black text-4xl">
                     Vendas
                 </a>
             </div>
