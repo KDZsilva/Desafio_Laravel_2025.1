@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagSeguroController;
+use App\Http\Controllers\User\ComprasController;
 use App\Models\Category;
 use App\Models\Subcategory;
 use GuzzleHttp\Middleware;
@@ -100,11 +101,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/user/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('user')->group(function () {
-    //Tabela de compras
+    //Tabela de vendas
     Route::get('/sales', [SalesController::class, 'index'])->middleware(['auth', 'verified'])->name('user.sales');
-    //Pdf de Visualização de compra
-
-    //PDF de visualização de histórico de compras
+    //Tabela de compras
+    Route::get('/compras', [ComprasController::class, 'index'])->middleware(['auth', 'verified'])->name('user.compras');
 });
 
 Route::middleware('auth')->group(function () {
@@ -116,6 +116,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('/sales/pdf', [SalesController::class, 'pdf'])->name('sales.pdf');
+Route::get('/sales/pdf', [SalesController::class, 'pdf'])->middleware(['auth', 'verified'])->name('sales.pdf');
+Route::get('/compras/pdf', [ComprasController::class, 'pdf'])->middleware(['auth', 'verified'])->name('compras.pdf');
 
 require __DIR__.'/auth.php';

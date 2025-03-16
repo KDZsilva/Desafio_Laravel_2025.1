@@ -1,20 +1,14 @@
 <x-app-layout>
-    <div class="w-full h-screen flex flex-row justify-center items-center gap-24">
-        <div class="flex flex-col gap-16">
+    <div class="w-full h-screen flex flex-row justify-center items-start mt-40 gap-24">
+        <div class="flex flex-col gap-16 align-start border-2 border-red-700">
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="#" class="font-black text-4xl">
+                <a href="{{route('user.compras')}}" class="font-black text-4xl">
                     Compras
-                </a>
-            </div>
-    
-            <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="{{route('admin.admins')}}" class="font-black text-4xl">
-                    Admins
                 </a>
             </div>
 
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
-                <a href="#" class="font-black text-4xl">
+                <a href="{{route('profile.edit')}}" class="font-black text-4xl">
                     Perfil
                 </a>
             </div>

@@ -43,9 +43,19 @@
                             {{ __('Profile') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('admin.dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-dropdown-link>
+                            @if (Auth::guard('admin')->check())
+                                <x-dropdown-link :href="route('admin.dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            @if (Auth::guard('web')->check())
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @endif
+
+                           
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">

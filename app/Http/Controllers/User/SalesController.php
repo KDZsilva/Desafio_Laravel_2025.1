@@ -11,15 +11,24 @@ use Illuminate\Http\Request;
 class SalesController extends Controller
 {
     public function index() {
-        $sales = Sale::orderByDesc('id')->where('user_id', '=', Auth::guard('web')->user()->id)->paginate(5);
+        $sales = Sale::orderByDesc('id')
+            ->join('products', 'sales.product_id', '=', 'products.id')
+            ->where('products.user_id', '=', Auth::guard('web')->user()->id)->with('product');
+
         return view('user.sales', ['sales' => $sales]);
     }
 
     public function pdf(Request $request) {
+        $request->validate([
+            'inicio' => 'required|date',
+            'final' => 'required|date|after_or_equal:inicio',
+        ]);
         $sales = Sale::orderByDesc('id')
-            ->where('user_id', '=', Auth::guard('web')->user()->id)
-            ->where('created_at', '>=', $request->inicio)
-            ->where('created_at', '<=', $request->final)
+            ->join('products', 'sales.product_id', '=', 'products.id')
+            ->where('products.user_id', '=', Auth::guard('web')->user()->id)
+            ->whereDate('sales.created_at', '>=', $request->inicio)
+            ->whereDate('sales.created_at', '<=', $request->final)
+            ->select('sales.*')
             ->get();
 
         $data = [
@@ -31,9 +40,5 @@ class SalesController extends Controller
 
         $pdf = Pdf::loadView('pdf', compact('data'));
         return $pdf->stream('sales.pdf');
-    }
-
-    public function gerarHistorico() {
-        //gerar pdf com todas as compras
     }
 }
