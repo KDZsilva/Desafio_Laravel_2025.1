@@ -45,15 +45,17 @@ class NewPasswordController extends Controller
             }
         );
 
+        
         if($status != Password::PASSWORD_RESET){
-            $request->only('email', 'password', 'password_confirmation', 'token' ),
-            function($admins) use ($request) {
-                $admin->forceFill([
-                    'password' => bcrypt($request->password)
-                ])->save();
-            }
+            $status = Password::broker('admins')->reset(
+                $request->only('email', 'password', 'password_confirmation', 'token' ),
+                function($admin) use ($request) {
+                    $admin->forceFill([
+                        'password' => bcrypt($request->password)
+                    ])->save();
+                }
+            );    
         }
-
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.

@@ -29,20 +29,15 @@ class PasswordResetLinkController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        $status = Password::broker('users')->sendResetLink($request->only('email'))
+        $status = Password::broker('users')->sendResetLink($request->only('email'));
 
-        if($status === Password::RESET_LINK_SENT);
+        if($status === Password::RESET_LINK_SENT)
             return back()->with('status, ($status)');
 
-            $status = Password::broker('users')->sendResetLink($request->only('email'))
+        $status = Password::broker('admins')->sendResetLink($request->only('email'));
 
-            if($status === Password::RESET_LINK_SENT);
-                return back()->with('status, ($status)');
-
-            $status = Password::broker('admins')->sendResetLink($request->only('email'))
-
-            if($status === Password::RESET_LINK_SENT);
-                return back()->with('status, ($status)');
+        if($status === Password::RESET_LINK_SENT)
+            return back()->with('status, ($status)');
 
 
         return back()->withInput($request->only('email'))
