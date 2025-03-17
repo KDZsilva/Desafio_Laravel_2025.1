@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagSeguroController;
 use App\Http\Controllers\User\ComprasController;
+use App\Http\Controllers\User\SaqueController;
 use App\Models\Category;
 use App\Models\Subcategory;
 use GuzzleHttp\Middleware;
@@ -105,12 +106,21 @@ Route::prefix('user')->group(function () {
     Route::get('/sales', [SalesController::class, 'index'])->middleware(['auth', 'verified'])->name('user.sales');
     //Tabela de compras
     Route::get('/compras', [ComprasController::class, 'index'])->middleware(['auth', 'verified'])->name('user.compras');
+    //tela de saques
+    Route::get('/saques', [SaqueController::class, 'index'])->middleware(['auth', 'verified'])->name('user.saques');
+    //Saque
+    Route::put('/saques/saque', [SaqueController::class, 'saque'])->middleware(['auth', 'verified'])->name('user.saques.saque');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::prefix('admin')->middleware(AuthAdmin::class)->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

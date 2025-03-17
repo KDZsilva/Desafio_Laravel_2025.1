@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="w-full h-screen flex flex-row justify-center items-start mt-40 gap-24">
-        <div class="flex flex-col gap-16 align-start border-2 border-red-700">
+        <div class="flex flex-col gap-16 align-start">
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
                 <a href="{{route('user.compras')}}" class="font-black text-4xl">
                     Compras
@@ -10,6 +10,12 @@
             <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
                 <a href="{{route('profile.edit')}}" class="font-black text-4xl">
                     Perfil
+                </a>
+            </div>
+
+            <div class="flex items-center justify-center p-2 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
+                <a href="{{route('user.saques')}}" class="font-black text-4xl">
+                    Saque
                 </a>
             </div>
         </div>

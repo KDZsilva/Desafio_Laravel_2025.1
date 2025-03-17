@@ -39,9 +39,18 @@
                     {{-- Dropdown de usuário logado --}}
                     @if($user)
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                            </x-dropdown-link>
+                            
+                            @if (Auth::guard('admin')->check())
+                                <x-dropdown-link :href="route('admin.profile.edit')">
+                                {{ __('Profile') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            @if (Auth::guard('web')->check())
+                                <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                                </x-dropdown-link>
+                            @endif
 
                             @if (Auth::guard('admin')->check())
                                 <x-dropdown-link :href="route('admin.dashboard')">
